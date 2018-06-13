@@ -1,7 +1,13 @@
 ---
+- hosts : docker_engine
+  roles:
+    - role: install-docker
+
+
 - hosts: docker-swarm
   roles:
     - role: ansible-dockerswarm
+
 
 - hosts: db
   remote_user: root
