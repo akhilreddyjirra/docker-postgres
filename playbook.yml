@@ -16,3 +16,7 @@
     - ./vars.yml
   roles:
     - postgresql
+
+- hosts : stack-deploy
+  roles:
+    - role: stack-deploy

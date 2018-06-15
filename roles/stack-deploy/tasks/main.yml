@@ -1,0 +1,16 @@
+- name: Clone a private repository into /opt.
+  git:
+    repo: https://github.com/stefanprodan/swarmprom.git
+    version: master
+    dest: /root/repo
+  #  accept_hostkey: yes
+  # ssh-agent doesn't allow key to pass through remote sudo commands.
+  become: no
+
+
+- name : execute shell commads
+  shell: |
+    cd /root/repo
+    ADMIN_USER=admin 
+    ADMIN_PASSWORD=admin
+    docker stack deploy -c docker-compose.yml mon

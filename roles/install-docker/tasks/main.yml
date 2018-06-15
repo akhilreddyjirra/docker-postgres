@@ -11,6 +11,13 @@
     state: "{{ docker_package_state }}"
   notify: restart docker
 
+# Yum install package
+- name: Install common packages
+  yum: pkg={{item}} state=installed
+  with_items :
+    - git
+    - nano
+    - wget
 - name: Ensure Docker is started and enabled at boot.
   service:
     name: docker
